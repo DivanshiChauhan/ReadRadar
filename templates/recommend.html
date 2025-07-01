@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Recommend | ReadRadar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg,
+        #000000,
+        #2C1E30,
+        #4C345A,
+        #6A4C75,
+        #8E5F88
+      );
+      color: #FDF6F6;
+    }
+
+    .navbar {
+      background-color: rgba(190, 149, 196, 0.85);
+      padding: 16px 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 22px;
+      font-weight: 600;
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        flex-wrap: nowrap;
+      }
+
+      .navbar-brand {
+        flex-basis: auto;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+      }
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .pastel-rainbow {
+      font-size: 40px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F2D4DC, #D6A5B7, #B47A9C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .form-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-control {
+      padding: 10px;
+      width: 90%;
+      max-width: 175px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .btn-custom {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #6D4C91;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      width: 19%;
+      background-color: #5E548E;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover-wrapper {
+      width: 100%;
+      height: 180px;
+      background-color: #231942;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    .title, .author {
+      font-size: 14px;
+      margin: 4px 0;
+      color: #FAF3F0;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    @media (max-width: 1200px) { .card { width: 24%; } }
+    @media (max-width: 992px) { .card { width: 32%; } }
+    @media (max-width: 768px) { .card { width: 48%; } }
+    @media (max-width: 576px) { .card { width: 100%; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand">📚 ReadRadar</div>
+    <ul class="nav-links">
+      <li><a href="/">🏠 Home</a></li>
+      <li><a href="/recommend">✨ Recommend</a></li>
+      <li><a href="/about">📖 About</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="pastel-rainbow">🔍 Find Your Next Read</h1>
+    </div>
+
+    <div class="form-section">
+      <form action="/recommend_books" method="post">
+        <input name="user_input" type="text" class="form-control" placeholder="Enter a book title..." required><br>
+        <input type="submit" class="btn-custom" value="Get Recommendations">
+      </form>
+    </div>
+
+    <div class="row">
+      {% if data %}
+        {% for i in data %}
+        <div class="card">
+          <div class="card-body">
+            <div class="cover-wrapper">
+              <img class="card-img" src="{{ i[2] }}" alt="Book Cover">
+            </div>
+            <p class="title">{{ i[0] }}</p>
+            <h4 class="author">{{ i[1] }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</body>
+</html>

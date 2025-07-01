@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About | ReadRadar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg,
+        #000000,
+        #2C1E30,
+        #4C345A,
+        #6A4C75,
+        #8E5F88,
+        #B47A9C,
+        #EAC4D5,
+        #F8E8EE
+      );
+      color: #FDF6F6;
+    }
+
+    .navbar {
+      background-color: rgba(190, 149, 196, 0.85);
+      padding: 16px 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 22px;
+      font-weight: 600;
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0 auto;
+    }
+    .about-container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .about-heading {
+      font-size: 40px;
+      background: linear-gradient(90deg, #F2D4DC, #D6A5B7, #B47A9C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        flex-wrap: nowrap;
+      }
+
+      .navbar-brand {
+        flex-basis: auto;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand">📚 ReadRadar</div>
+    <ul class="nav-links">
+      <li><a href="/">🏠 Home</a></li>
+      <li><a href="/recommend">✨ Recommend</a></li>
+      <li><a href="/about">📖 About</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-container">
+    <h1 class="about-heading">📖 About ReadRadar</h1>
+    <p class="about-text">
+      Welcome to <strong>ReadRadar</strong> — your personalized book buddy!<br><br>
+      This app recommends books based on your favorite reads using collaborative filtering. Whether you're into fantasy, mystery, or romance, we help you discover new titles you'll love. 💡📘<br><br>
+      Built using <strong>Python, Flask</strong>, and data from <strong>Kaggle</strong>, it's a light and elegant tool for all book lovers. ☕✨
+    </p>
+  </div>
+
+</body>
+</html>
